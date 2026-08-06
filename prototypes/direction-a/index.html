@@ -1,0 +1,406 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Direction A — Clean Professional | PORTFOLIO-LP-001</title>
+<style>
+  :root {
+    --primary: #2563EB;
+    --primary-dark: #1E40AF;
+    --primary-light: #3B82F6;
+    --bg: #FFFFFF;
+    --surface: #F9FAFB;
+    --text: #111827;
+    --text-secondary: #6B7280;
+    --border: #E5E7EB;
+    --radius: 8px;
+    --radius-card: 12px;
+    --radius-pill: 16px;
+  }
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body { font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; color: var(--text); background: var(--bg); line-height: 1.6; }
+  .container { max-width: 1200px; margin: 0 auto; padding: 0 24px; }
+  section { padding: 80px 0; }
+  h1 { font-size: 48px; font-weight: 700; line-height: 1.1; letter-spacing: -0.02em; }
+  h2 { font-size: 32px; font-weight: 700; line-height: 1.2; margin-bottom: 16px; }
+  h3 { font-size: 20px; font-weight: 600; line-height: 1.3; }
+  p { font-size: 16px; color: var(--text-secondary); }
+  a { color: var(--primary); text-decoration: none; }
+  .btn { display: inline-block; padding: 14px 28px; border-radius: var(--radius); font-size: 16px; font-weight: 600; cursor: pointer; transition: all 0.2s; border: none; }
+  .btn-primary { background: var(--primary); color: #fff; }
+  .btn-primary:hover { background: var(--primary-dark); }
+  .btn-secondary { background: transparent; color: var(--primary); border: 1px solid var(--border); }
+  .btn-secondary:hover { border-color: var(--primary); }
+  .badge { display: inline-block; padding: 4px 12px; border-radius: var(--radius-pill); font-size: 12px; font-weight: 600; background: #EFF6FF; color: var(--primary); }
+  .pill { display: inline-block; padding: 6px 16px; border-radius: var(--radius-pill); font-size: 14px; font-weight: 500; background: var(--surface); border: 1px solid var(--border); color: var(--text); margin: 4px; }
+
+  /* Hero */
+  .hero { padding: 120px 0 80px; text-align: center; }
+  .hero h1 { max-width: 800px; margin: 0 auto 24px; }
+  .hero p { font-size: 20px; max-width: 640px; margin: 0 auto 40px; }
+  .hero .ctas { display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; }
+
+  /* Connected Workflow */
+  .workflow { background: var(--surface); }
+  .workflow-steps { display: grid; grid-template-columns: repeat(6, 1fr); gap: 16px; margin-top: 48px; position: relative; }
+  .workflow-step { text-align: center; position: relative; }
+  .workflow-step .icon { width: 56px; height: 56px; border-radius: 50%; background: var(--primary); color: #fff; display: flex; align-items: center; justify-content: center; margin: 0 auto 12px; font-size: 20px; }
+  .workflow-step .label { font-size: 14px; font-weight: 600; color: var(--text); }
+  .workflow-step .desc { font-size: 13px; color: var(--text-secondary); margin-top: 4px; }
+  .workflow-step:not(:last-child)::after { content: '→'; position: absolute; right: -20px; top: 18px; color: var(--primary); font-size: 20px; font-weight: 700; }
+
+  /* Problem */
+  .problem-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 32px; margin-top: 48px; }
+  .problem-card { padding: 32px; border-radius: var(--radius-card); border: 1px solid var(--border); }
+  .problem-card .icon { font-size: 28px; margin-bottom: 16px; }
+  .problem-card h3 { margin-bottom: 8px; }
+  .problem-card p { font-size: 15px; }
+
+  /* Services */
+  .services-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; margin-top: 48px; }
+  .service-card { padding: 32px; border-radius: var(--radius-card); border: 1px solid var(--border); transition: box-shadow 0.2s; }
+  .service-card:hover { box-shadow: 0 4px 12px rgba(0,0,0,0.08); }
+  .service-card h3 { margin-bottom: 8px; }
+  .service-card p { font-size: 15px; }
+
+  /* Features */
+  .features-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; margin-top: 48px; }
+  .feature-item { display: flex; align-items: flex-start; gap: 12px; }
+  .feature-item .icon { width: 40px; height: 40px; border-radius: 8px; background: #EFF6FF; color: var(--primary); display: flex; align-items: center; justify-content: center; flex-shrink: 0; font-size: 18px; }
+  .feature-item h4 { font-size: 15px; font-weight: 600; margin-bottom: 4px; }
+  .feature-item p { font-size: 14px; }
+
+  /* Tech Stack */
+  .tech-stack { text-align: center; }
+  .tech-pills { display: flex; flex-wrap: wrap; justify-content: center; gap: 8px; margin-top: 32px; }
+
+  /* Case Study */
+  .case-card { max-width: 640px; margin: 48px auto 0; padding: 32px; border-radius: var(--radius-card); border: 1px solid var(--border); text-align: center; }
+  .case-card h3 { margin-bottom: 8px; }
+  .case-card p { margin-bottom: 24px; }
+
+  /* Process */
+  .process-steps { display: grid; grid-template-columns: repeat(6, 1fr); gap: 16px; margin-top: 48px; }
+  .process-step { text-align: center; }
+  .process-step .num { width: 40px; height: 40px; border-radius: 50%; background: var(--primary); color: #fff; display: flex; align-items: center; justify-content: center; margin: 0 auto 12px; font-size: 16px; font-weight: 700; }
+  .process-step .label { font-size: 14px; font-weight: 600; }
+
+  /* FAQ */
+  .faq-list { max-width: 720px; margin: 48px auto 0; }
+  .faq-item { border-bottom: 1px solid var(--border); padding: 20px 0; }
+  .faq-item summary { font-size: 16px; font-weight: 600; cursor: pointer; list-style: none; }
+  .faq-item summary::before { content: '+ '; color: var(--primary); }
+  .faq-item[open] summary::before { content: '− '; }
+  .faq-item p { margin-top: 12px; font-size: 15px; }
+
+  /* Lead Form */
+  .lead-form { background: var(--surface); }
+  .form-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px; max-width: 720px; margin: 48px auto 0; }
+  .form-group { display: flex; flex-direction: column; gap: 6px; }
+  .form-group.full { grid-column: 1 / -1; }
+  .form-group label { font-size: 14px; font-weight: 600; color: var(--text); }
+  .form-group input, .form-group select, .form-group textarea { padding: 12px 16px; border: 1px solid var(--border); border-radius: var(--radius); font-size: 15px; font-family: inherit; background: #fff; }
+  .form-group textarea { min-height: 100px; resize: vertical; }
+  .form-group input:focus, .form-group select:focus, .form-group textarea:focus { outline: none; border-color: var(--primary); box-shadow: 0 0 0 3px rgba(37,99,235,0.1); }
+  .form-submit { grid-column: 1 / -1; text-align: center; margin-top: 8px; }
+
+  /* Footer */
+  footer { padding: 48px 0; border-top: 1px solid var(--border); text-align: center; }
+  footer p { font-size: 14px; color: var(--text-secondary); }
+  footer .disclaimer { margin-top: 16px; font-size: 13px; color: #9CA3AF; }
+
+  /* Mobile */
+  @media (max-width: 768px) {
+    h1 { font-size: 32px; }
+    h2 { font-size: 24px; }
+    section { padding: 48px 0; }
+    .hero { padding: 80px 0 48px; }
+    .workflow-steps, .process-steps { grid-template-columns: 1fr; gap: 24px; }
+    .workflow-step:not(:last-child)::after { content: '↓'; right: auto; top: auto; bottom: -16px; left: 50%; transform: translateX(-50%); }
+    .problem-grid, .services-grid, .features-grid { grid-template-columns: 1fr; }
+    .form-grid { grid-template-columns: 1fr; }
+    .form-group.full { grid-column: auto; }
+  }
+</style>
+</head>
+<body>
+
+<!-- Hero -->
+<section class="hero">
+  <div class="container">
+    <h1>Turn Website Enquiries Into a Reliable Lead Workflow</h1>
+    <p>We design and build responsive landing pages that capture, validate, organise, and follow up with leads—without relying on manual handoffs.</p>
+    <div class="ctas">
+      <a href="#lead-form" class="btn btn-primary">Request a Workflow Review</a>
+      <a href="#workflow" class="btn btn-secondary">See How It Works</a>
+    </div>
+  </div>
+</section>
+
+<!-- Connected Workflow -->
+<section id="workflow" class="workflow">
+  <div class="container">
+    <h2 style="text-align:center;">How It Works</h2>
+    <div class="workflow-steps">
+      <div class="workflow-step">
+        <div class="icon">🌐</div>
+        <div class="label">Landing Page</div>
+        <div class="desc">Responsive design</div>
+      </div>
+      <div class="workflow-step">
+        <div class="icon">✓</div>
+        <div class="label">Form Validation</div>
+        <div class="desc">Real-time checks</div>
+      </div>
+      <div class="workflow-step">
+        <div class="icon">📊</div>
+        <div class="label">Airtable / CRM</div>
+        <div class="desc">Record created</div>
+      </div>
+      <div class="workflow-step">
+        <div class="icon">✉️</div>
+        <div class="label">Email Confirmation</div>
+        <div class="desc">Gmail auto-reply</div>
+      </div>
+      <div class="workflow-step">
+        <div class="icon">💬</div>
+        <div class="label">Slack Notification</div>
+        <div class="desc">Real-time alert</div>
+      </div>
+      <div class="workflow-step">
+        <div class="icon">⏰</div>
+        <div class="label">Scheduled Follow-up</div>
+        <div class="desc">n8n automation</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Problem Statement -->
+<section>
+  <div class="container">
+    <h2 style="text-align:center;">Your Landing Page Isn't Your Problem</h2>
+    <div class="problem-grid">
+      <div class="problem-card">
+        <div class="icon">📉</div>
+        <h3>Leads fall through the cracks</h3>
+        <p>Without automated follow-up, enquiries quietly disappear from your pipeline.</p>
+      </div>
+      <div class="problem-card">
+        <div class="icon">🔄</div>
+        <h3>Manual lead management is inconsistent</h3>
+        <p>Spreadsheets and inboxes don't scale. Missed follow-ups cost real revenue.</p>
+      </div>
+      <div class="problem-card">
+        <div class="icon">🔍</div>
+        <h3>No visibility into lead status</h3>
+        <p>Without structured tracking, you can't see which leads need attention.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Service Cards -->
+<section style="background:var(--surface);">
+  <div class="container">
+    <h2 style="text-align:center;">What We Deliver</h2>
+    <div class="services-grid">
+      <div class="service-card">
+        <h3>Landing Page Design</h3>
+        <p>Responsive, conversion-focused pages built with modern frameworks.</p>
+      </div>
+      <div class="service-card">
+        <h3>Workflow Automation</h3>
+        <p>n8n + Airtable + Gmail + Slack — end-to-end lead management.</p>
+      </div>
+      <div class="service-card">
+        <h3>Integration Setup</h3>
+        <p>CRM connections, form handling, and automated follow-up systems.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Features -->
+<section>
+  <div class="container">
+    <h2 style="text-align:center;">Core Capabilities</h2>
+    <div class="features-grid">
+      <div class="feature-item">
+        <div class="icon">📱</div>
+        <div><h4>Responsive Design</h4><p>Works perfectly on desktop, tablet, and mobile.</p></div>
+      </div>
+      <div class="feature-item">
+        <div class="icon">✅</div>
+        <div><h4>Form Validation</h4><p>Real-time field validation with clear error messages.</p></div>
+      </div>
+      <div class="feature-item">
+        <div class="icon">📊</div>
+        <div><h4>Airtable Integration</h4><p>Leads automatically stored and organised.</p></div>
+      </div>
+      <div class="feature-item">
+        <div class="icon">✉️</div>
+        <div><h4>Gmail Automation</h4><p>Instant confirmation emails to every lead.</p></div>
+      </div>
+      <div class="feature-item">
+        <div class="icon">💬</div>
+        <div><h4>Slack Notifications</h4><p>Real-time team alerts for new enquiries.</p></div>
+      </div>
+      <div class="feature-item">
+        <div class="icon">⏰</div>
+        <div><h4>Scheduled Follow-up</h4><p>Automated reminders for untouched leads.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Tech Stack -->
+<section class="tech-stack" style="background:var(--surface);">
+  <div class="container">
+    <h2>Built with Proven Tools</h2>
+    <div class="tech-pills">
+      <span class="pill">n8n</span>
+      <span class="pill">Airtable</span>
+      <span class="pill">Gmail</span>
+      <span class="pill">Slack</span>
+      <span class="pill">Next.js</span>
+    </div>
+  </div>
+</section>
+
+<!-- Concept Case -->
+<section>
+  <div class="container">
+    <div class="case-card">
+      <span class="badge">Independent Demo</span>
+      <h3 style="margin-top:16px;">Lead Management Automation Demo</h3>
+      <p>Workflow automation showcasing form capture, Airtable storage, email confirmation, and Slack notifications.</p>
+      <a href="#" class="btn btn-primary">View Case Study</a>
+    </div>
+  </div>
+</section>
+
+<!-- Process -->
+<section style="background:var(--surface);">
+  <div class="container">
+    <h2 style="text-align:center;">Our Process</h2>
+    <div class="process-steps">
+      <div class="process-step"><div class="num">1</div><div class="label">Discovery</div></div>
+      <div class="process-step"><div class="num">2</div><div class="label">Design</div></div>
+      <div class="process-step"><div class="num">3</div><div class="label">Development</div></div>
+      <div class="process-step"><div class="num">4</div><div class="label">Automation</div></div>
+      <div class="process-step"><div class="num">5</div><div class="label">Testing</div></div>
+      <div class="process-step"><div class="num">6</div><div class="label">Launch</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section>
+  <div class="container">
+    <h2 style="text-align:center;">Frequently Asked Questions</h2>
+    <div class="faq-list">
+      <details class="faq-item">
+        <summary>Is this a real client project?</summary>
+        <p>Independent concept project showcasing technical capabilities.</p>
+      </details>
+      <details class="faq-item">
+        <summary>What's the typical delivery timeline?</summary>
+        <p>Depends on project complexity, typically 2-6 weeks.</p>
+      </details>
+      <details class="faq-item">
+        <summary>What tech stack do you use?</summary>
+        <p>Next.js + n8n + Airtable</p>
+      </details>
+      <details class="faq-item">
+        <summary>Can workflows be customized?</summary>
+        <p>Workflows are designed based on specific requirements.</p>
+      </details>
+      <details class="faq-item">
+        <summary>Do you offer ongoing support?</summary>
+        <p>Support options can be discussed.</p>
+      </details>
+    </div>
+  </div>
+</section>
+
+<!-- Lead Form -->
+<section id="lead-form" class="lead-form">
+  <div class="container">
+    <h2 style="text-align:center;">Request a Workflow Review</h2>
+    <form class="form-grid" onsubmit="event.preventDefault(); alert('Thank you! This is a demo form — no data is submitted.');">
+      <div class="form-group">
+        <label>Name *</label>
+        <input type="text" required placeholder="Your name">
+      </div>
+      <div class="form-group">
+        <label>Business Email *</label>
+        <input type="email" required placeholder="you@company.com">
+      </div>
+      <div class="form-group">
+        <label>Company *</label>
+        <input type="text" required placeholder="Company name">
+      </div>
+      <div class="form-group">
+        <label>Website</label>
+        <input type="url" placeholder="https://...">
+      </div>
+      <div class="form-group">
+        <label>Project Type *</label>
+        <select required>
+          <option value="">Select...</option>
+          <option>Landing Page + Automation</option>
+          <option>Automation Only</option>
+          <option>Landing Page Only</option>
+          <option>Other</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label>Current Tools</label>
+        <input type="text" placeholder="e.g. HubSpot, Mailchimp...">
+      </div>
+      <div class="form-group full">
+        <label>Main Problem *</label>
+        <textarea required placeholder="Describe your main challenge..."></textarea>
+      </div>
+      <div class="form-group">
+        <label>Target Timeline</label>
+        <select>
+          <option value="">Select...</option>
+          <option>ASAP</option>
+          <option>1-2 weeks</option>
+          <option>2-4 weeks</option>
+          <option>1-2 months</option>
+          <option>No rush</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label>Estimated Budget</label>
+        <select>
+          <option value="">Select...</option>
+          <option>Under $500</option>
+          <option>$500 - $1,000</option>
+          <option>$1,000 - $2,500</option>
+          <option>$2,500 - $5,000</option>
+          <option>$5,000+</option>
+        </select>
+      </div>
+      <div class="form-submit">
+        <button type="submit" class="btn btn-primary">Request a Workflow Review</button>
+      </div>
+    </form>
+  </div>
+</section>
+
+<!-- Footer -->
+<footer>
+  <div class="container">
+    <p>© 2026 AI Automation Consulting</p>
+    <p class="disclaimer">Independent Concept Project — not a real client engagement. All data shown is simulated.</p>
+  </div>
+</footer>
+
+</body>
+</html>
